@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'myapp';
+  public hide = 'hide';
+  public auth = 'auth';
+  public account = 'account';
 }
+
+
