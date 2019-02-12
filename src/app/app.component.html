@@ -1,14 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<form [class]="auth">
+<form (ngSubmit)="onSubmit()" #myForm="ngForm" *ngIf="isShow1" [class]="auth">
   <h3>Авторизация</h3>
-  <input name="Login" type="text" placeholder="Логин">
-  <input name="Password" type="password" placeholder="Пароль">
-  <button (click)="auth = 'hide'; hide = 'account'" type="button">Войти</button></form>
-<form [class]="hide">
+  <input required name="Login" [(ngModel)]="login" type="text" placeholder="Логин">
+  <input required name="Password"  [(ngModel)] = "password" type="password" placeholder="Пароль">
+  <button (click)="isShow1 =  false; isShow2 = false" type="submit" [disabled]="!myForm.form.valid">Войти</button></form>
+
+<form (ngSubmit)="onSubmit()" #myAccForm="ngForm" *ngIf="!isShow2" [class]="account">
   <h3>Введите ваши данные</h3>
-  <input name="Name" type="text" placeholder="Фамилия">
-  <input name="Last_name" type="text" placeholder="Имя">
-  <input name="reg_date" type="date" placeholder="Дата регистрации">
-  <label><input name="News" type="checkbox">Желаю получать новости</label>
-  <button type="submit">Сохранить</button>
+  <input required name="Name" [(ngModel)]="lasttname" type="text" placeholder="Фамилия">
+  <input required name="Last_name" [(ngModel)]="firstname" type="text" placeholder="Имя">
+  <input required name="reg_date" type="text" [(ngModel)]="regDate" placeholder="Дата регистрации" onfocus="(this.type='date')" #date>
+  <label><input name="News" type="checkbox" #check>Желаю получать новости</label>
+  <button type="submit" [disabled]="!myAccForm.form.valid">Сохранить</button>
 </form>
